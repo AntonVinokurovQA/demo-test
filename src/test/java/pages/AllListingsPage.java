@@ -39,7 +39,7 @@ public class AllListingsPage {
     public void isCorrectNumberOfListings(String tabName){
         int number = getNumberOfListingsFromTabHeader(tabName);
         goToTab(tabName);
-        $(By.xpath("//h3")).shouldBe(Condition.visible);
-        assertTrue($$(By.xpath("//h3")).size() == number);
+        $(By.xpath(headerOfElement)).shouldBe(Condition.visible);
+        assertTrue($$(By.xpath(headerOfElement)).size() == number);
     }
 }

@@ -1,5 +1,3 @@
-
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -8,7 +6,10 @@ import pages.MainPage;
 
 
 public class MainPageTest extends BaseTest {
-    MainPage mainPage = new MainPage();
+    private MainPage mainPage = new MainPage();
+    private final int DATE_RANGE_ONE_DAY = 1;
+    private final int DATE_RANGE_TWO_DAYS = 2;
+    private final int DATE_RANGE_THREE_DAYS = 3;
 
     @Test
     public void checkMainPageIsOpened() {
@@ -56,7 +57,7 @@ public class MainPageTest extends BaseTest {
     @DisplayName("Check that current and next month is shown in the filter To")
     public void checkCurrentAndNextMonthShownInFilterTo() {
         mainPage.openMainPage()
-                .setDate(3)
+                .setDate(DATE_RANGE_THREE_DAYS)
                 .clickDateTo()
                 .areMonthsValid();
     }
@@ -65,16 +66,16 @@ public class MainPageTest extends BaseTest {
     @DisplayName("Check that selected period is highlighted in calendar")
     public void checkSelectedPeriodOneDayHighlighted() {
         mainPage.openMainPage()
-                .setDate(1)
-                .isHighlightedPeriod(1);
+                .setDate(DATE_RANGE_ONE_DAY)
+                .isHighlightedPeriod(DATE_RANGE_ONE_DAY);
     }
 
     @Test
     @DisplayName("Check that selected period is highlighted in calendar")
     public void checkSelectedPeriodTwoDaysHighlighted() {
         mainPage.openMainPage()
-                .setDate(2)
-                .isHighlightedPeriod(2);
+                .setDate(DATE_RANGE_TWO_DAYS)
+                .isHighlightedPeriod(DATE_RANGE_TWO_DAYS);
     }
 
     @Test
@@ -89,7 +90,7 @@ public class MainPageTest extends BaseTest {
     @DisplayName("Check that Clear Dates button works")
     public void checkClearDatesButton() {
         mainPage.openMainPage()
-                .setDate(3)
+                .setDate(DATE_RANGE_THREE_DAYS)
                 .clickDateFrom()
                 .clearDates()
                 .isSelectDateTextVisible();
@@ -99,7 +100,7 @@ public class MainPageTest extends BaseTest {
     @DisplayName("Check that check-in date is shown in expanded calendar")
     public void checkCheckInDateShownInExpandedCalendar() {
         mainPage.openMainPage()
-                .setDate(3)
+                .setDate(DATE_RANGE_THREE_DAYS)
                 .clickDateFrom()
                 .isCheckInDateShownInExpandedCalendar();
 
@@ -109,7 +110,7 @@ public class MainPageTest extends BaseTest {
     @DisplayName("Check that check-in date is shown in search field")
     public void checkCheckInDateShownInSearchField() {
         mainPage.openMainPage()
-                .setDate(3)
+                .setDate(DATE_RANGE_THREE_DAYS)
                 .isCheckInDateShownInSearchField();
     }
 
@@ -117,9 +118,9 @@ public class MainPageTest extends BaseTest {
     @DisplayName("Check that check-out date is shown in expanded calendar")
     public void checkCheckOutDateShownInExpandedCalendar() {
         mainPage.openMainPage()
-                .setDate(3)
+                .setDate(DATE_RANGE_THREE_DAYS)
                 .clickDateFrom()
-                .isCheckOutDateShownInExpandedCalendar(3);
+                .isCheckOutDateShownInExpandedCalendar(DATE_RANGE_THREE_DAYS);
 
     }
 
@@ -127,15 +128,15 @@ public class MainPageTest extends BaseTest {
     @DisplayName("Check that check-out date is shown in search field")
     public void checkCheckOutDateShownInSearchField() {
         mainPage.openMainPage()
-                .setDate(3)
-                .isCheckOutDateShownInSearchField(3);
+                .setDate(DATE_RANGE_THREE_DAYS)
+                .isCheckOutDateShownInSearchField(DATE_RANGE_THREE_DAYS);
     }
 
     @Test
     @DisplayName("Check that search by date had results")
     public void checkSearchByDate() {
         mainPage.openMainPage()
-                .setDate(3)
+                .setDate(DATE_RANGE_THREE_DAYS)
                 .searchClick()
                 .isSearchSuccessfulMessageShown();
     }

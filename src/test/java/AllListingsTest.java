@@ -3,7 +3,8 @@ import org.junit.jupiter.api.Test;
 import pages.AllListingsPage;
 
 public class AllListingsTest extends BaseTest {
-    AllListingsPage page = new AllListingsPage();
+    private AllListingsPage page = new AllListingsPage();
+    private final String TAB_NAME = "test";
 
     @Test
     @DisplayName("Check that All Listings page was opened")
@@ -16,6 +17,6 @@ public class AllListingsTest extends BaseTest {
     @DisplayName("Check that numbers of listings is correct")
     public void checkCorrectNumberOfListings() {
         page.openAllListingsPage()
-                .isCorrectNumberOfListings("test");
+                .isCorrectNumberOfListings(TAB_NAME);
     }
 }
